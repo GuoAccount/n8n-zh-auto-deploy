@@ -13,7 +13,7 @@ echo "========================================="
 # 镜像源选择
 echo "🌐 镜像源选择:"
 echo "1) GitHub (默认)"
-echo "2) 国内镜像加速 (ghproxy.com)"
+echo "2) 国内镜像加速 (gh.llkk.cc)"
 echo "3) 自定义镜像源"
 echo "4) 不使用镜像加速"
 echo ""
@@ -22,7 +22,7 @@ read -r mirror_choice
 
 case $mirror_choice in
     2)
-        MIRROR_URL="https://ghproxy.com/"
+        MIRROR_URL="https://gh.llkk.cc/"
         echo "✅ 已选择国内镜像加速"
         ;;
     3)
@@ -129,7 +129,7 @@ CLEAN_VERSION=$(echo "$TRANSLATION_VERSION" | sed 's/n8n@//')
 ENCODED_VERSION=$(echo "$TRANSLATION_VERSION" | sed 's/@/%40/g')
 
 if [ ! -z "$MIRROR_URL" ]; then
-    # 使用镜像源，对于ghproxy需要特殊处理URL格式
+    # 使用镜像源，对于gh.llkk.cc需要特殊处理URL格式
     DOWNLOAD_URL="${MIRROR_URL}https://github.com/other-blowsnow/n8n-i18n-chinese/releases/download/n8n@${CLEAN_VERSION}/editor-ui.tar.gz"
 else
     # 直接使用GitHub
@@ -140,9 +140,9 @@ if [ ! -f "editor-ui.tar.gz" ]; then
     echo "⬇️  正在从以下地址下载汉化包:"
     echo "   $DOWNLOAD_URL"
     
-    # 对于ghproxy，需要将URL中的特殊字符进行处理
-    if [ ! -z "$MIRROR_URL" ] && [[ "$MIRROR_URL" == *"ghproxy.com"* ]]; then
-        # ghproxy需要将GitHub原始URL作为参数传递
+    # 对于gh.llkk.cc，需要将URL中的特殊字符进行处理
+    if [ ! -z "$MIRROR_URL" ] && [[ "$MIRROR_URL" == *"gh.llkk.cc"* ]]; then
+        # gh.llkk.cc需要将GitHub原始URL作为参数传递
         PROXY_URL="${MIRROR_URL}https://github.com/other-blowsnow/n8n-i18n-chinese/releases/download/n8n@${CLEAN_VERSION}/editor-ui.tar.gz"
         echo "使用镜像源: $PROXY_URL"
         if ! curl -L "$PROXY_URL" -o editor-ui.tar.gz; then
