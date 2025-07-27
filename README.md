@@ -30,7 +30,7 @@ chmod +x deploy.sh
 ./deploy.sh
 ```
 
-![一键部署演示](static/PixPin_2025-07-27_17-00-15.gif)
+![一键部署演示](static/install.gif)
 
 脚本将自动完成以下操作：
 1. 检查 Docker 环境
@@ -148,13 +148,15 @@ docker-compose ps
 
 我们提供了一个卸载脚本来帮助您清理环境：
 
-```bash
+```
 # 添加执行权限
 chmod +x uninstall.sh
 
 # 运行卸载脚本
 ./uninstall.sh
 ```
+
+![卸载演示](static/uninstall.gif)
 
 脚本将询问您是否要删除数据目录，您可以根据需要选择是否保留数据。
 
