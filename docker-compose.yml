@@ -1,0 +1,18 @@
+services:
+  n8n-zh:
+    image: n8nio/n8n:latest
+    container_name: n8n-zh
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_DEFAULT_LOCALE=zh-CN
+      - N8N_SECURE_COOKIE=false
+      - N8N_HOST=0.0.0.0
+      - N8N_RUNNERS_ENABLED=true
+    volumes:
+      - ./editor-ui-dist/dist:/usr/local/lib/node_modules/n8n/node_modules/n8n-editor-ui/dist
+      - ./n8n-data:/home/node/.n8n
+      - ./data:/data
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
